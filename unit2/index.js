@@ -23,9 +23,9 @@ app.engine(
   }));
 
 
-// const port = process.env.port || 3011;
-// app.listen(port);
-// console.log(`listen to server: http://localhost:${port}`);
+const port = process.env.port || 8080;
+app.listen(port);
+console.log(`listen to server: http://localhost:${port}`);
 
 // landing
 
