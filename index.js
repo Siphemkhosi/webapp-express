@@ -1,7 +1,5 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-// const billWithSetting = require("./js/settings-Bill");
-
 const bodyParser = require("body-parser");
 
 const SettingsBill = require("./js/settings-Bill");
@@ -14,7 +12,6 @@ app.use(bodyParser.json());
 
 //handlebars
 app.set("view engine", "hbs");
-
 app.engine(
   "hbs",
   exphbs.engine({
@@ -28,7 +25,6 @@ app.listen(port);
 console.log(`listen to server: http://localhost:${port}`);
 
 // landing
-
 app.get("/", (req, res) => {
   res.render("index", {settings: settingsBill.getSettings(),
          totals: settingsBill.totals(),
