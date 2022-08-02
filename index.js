@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 
-const SettingsBill = require("./js/settings-Bill");
+const SettingsBill = require("./settings-Bill");
 const app = express();
 const settingsBill = SettingsBill();
 
