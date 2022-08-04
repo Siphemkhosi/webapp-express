@@ -1,3 +1,4 @@
+
 const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -5,6 +6,7 @@ const bodyParser = require("body-parser");
 const SettingsBill = require("./settings-Bill");
 const app = express();
 const settingsBill = SettingsBill();
+const moment = require("moment");
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -53,10 +55,18 @@ app.post("/action", (req, res) => {
 });
 
 app.get("/actions", (req, res) => {
+  for (const item of settingsBill.actions()) {
+    let Date = item.actionDate;
+     item.timestamp = moment(Date).fromNow()
+  }
   res.render('actions', {actions: settingsBill.actions()} );
 });
 
 app.get("/actions/:type", (req, res) => {
+  for (const item of settingsBill.actions()) {
+    let Date = item.actionDate;
+     item.timestamp = moment(Date).fromNow()
+  }
   let type = req.params.type;
   res.render('actions',{actions: settingsBill.actionsFor(type)} );
 });
